@@ -47,9 +47,9 @@ public class SimulationPresenter {
             this.addCell(String.valueOf(bounds.topRight().getY() - i), 0, i + 1);
             mapGrid.getRowConstraints().add(new RowConstraints(CELL_SIZE));
             for (int j = 0; j <= width; j++) {
-                List<Animal> animals = simulation.getMap().objectsAt(new Vector2d(bounds.bottomLeft().getX() + j, bounds.topRight().getY() - i));
+                List<WorldElement> elements = simulation.getMap().objectsAt(new Vector2d(bounds.bottomLeft().getX() + j, bounds.topRight().getY() - i));
 
-                String text = animals == null ? " " : animals.stream()
+                String text = elements == null ? " " : elements.stream()
                         .map(Object::toString)
                         .collect(Collectors.joining(", "));
                 this.addCell(text, j + 1, i + 1);

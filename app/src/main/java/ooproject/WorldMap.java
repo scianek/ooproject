@@ -1,12 +1,10 @@
 package ooproject;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class WorldMap {
     private final Map<Vector2d, List<Animal>> animals = new HashMap<>();
+    private final Map<Vector2d, Plant> plants = new HashMap<>();
     private Vector2d bottomLeft = new Vector2d(0, 0);
     private Vector2d upperRight;
 
@@ -18,8 +16,14 @@ public class WorldMap {
         return new Boundary(bottomLeft, upperRight);
     }
 
-    public List<Animal> objectsAt(Vector2d position) {
-        return this.animals.get(position);
+    public List<WorldElement> objectsAt(Vector2d position) {
+        List<WorldElement> elements = new ArrayList<>(Optional.ofNullable(this.animals.get(position))
+                .orElse(List.of()));
+        if (plants.get(position) != null) {
+            elements.add(plants.get(position));
+        }
+        return elements;
+
     }
 
     public void placeAnimal(Animal animal) {
@@ -49,5 +53,13 @@ public class WorldMap {
         }
         animal.setPosition(new Vector2d(newX, newY));
         placeAnimal(animal);
+    }
+
+    public void placePlant(Plant plant) {
+        plants.put(plant.getPosition(), plant);
+    }
+
+    public Map<Vector2d, Plant> getPlants() {
+        return Collections.unmodifiableMap(plants);
     }
 }

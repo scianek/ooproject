@@ -1,9 +1,6 @@
 package ooproject;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -27,5 +24,33 @@ public class RandomGenerator {
                 .map(i -> random.nextInt(8))
                 .boxed()
                 .collect(Collectors.toList());
+    }
+
+    public static List<Vector2d> generatePlantPositions(WorldMap map, int numOfPositions) {
+        var bounds = map.getCurrentBounds();
+        int width = bounds.topRight().getX();
+        int height = bounds.topRight().getY();
+
+        List<Vector2d> positions = new ArrayList<>();
+        Map<Vector2d, Plant> existingPlants = map.getPlants();
+        for (int i = 0; i <= width; i++) {
+            for (int j = 0; j <= height; j++) {
+                Vector2d currPosition = new Vector2d(i, j);
+                if (existingPlants.get(currPosition) != null) {
+                    continue;
+                }
+                boolean hasAdjacentPlants = Arrays.stream(MapOrientation.values()).anyMatch((MapOrientation orientation) ->
+                        existingPlants.get(currPosition.add(orientation.getMove())) != null);
+
+                if (hasAdjacentPlants) {
+                    // if it's a preferred field, make it 4 times more likely to come up
+                    positions.addAll(Collections.nCopies(4, currPosition));
+                } else {
+                    positions.add(currPosition);
+                }
+            }
+        }
+        Collections.shuffle(positions);
+        return positions.size() > numOfPositions ? positions.subList(0, numOfPositions) : positions;
     }
 }

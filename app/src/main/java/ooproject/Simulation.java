@@ -25,6 +25,10 @@ public class Simulation {
             map.moveAnimal(animal, nextMove);
         }
         currDay++;
+
+        List<Vector2d> newPlantPositions = RandomGenerator.generatePlantPositions(map, 3);
+        newPlantPositions.forEach(position -> map.placePlant(new Plant(position)));
+
     }
 
     public WorldMap getMap() {

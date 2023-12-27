@@ -45,7 +45,7 @@ public class Simulation {
         }
         currDay++;
 
-        List<Vector2d> newPlantPositions = RandomGenerator.generatePlantPositions(map, 3);
+        List<Vector2d> newPlantPositions = RandomGenerator.generatePlantPositions(map, 3, new CrawlingJungle());
         newPlantPositions.forEach(position -> map.placePlant(new Plant(position)));
 
         addPlants(config.numOfPlantsGrowingPerDay());

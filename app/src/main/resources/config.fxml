@@ -63,12 +63,23 @@
                 <TextField maxWidth="100.0"/>
             </VBox>
             <VBox>
-                <Label text="Plant growing method"/>
-                <ComboBox fx:id="comboBox" promptText="Select an option" value="Zalesione równiki">
+                <Label text="Plant growing variant"/>
+                <ComboBox fx:id="plantGrowingVariantComboBox" promptText="Select an option" value="Zalesione równiki">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="Zalesione równiki"/>
                             <String fx:value="Pełzająca dżungla"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+            </VBox>
+            <VBox>
+                <Label text="Gene mutation variant"/>
+                <ComboBox fx:id="geneMutationVariantComboBox" promptText="Select an option" value="Pełna losowość">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Pełna losowość"/>
+                            <String fx:value="Podmianka"/>
                         </FXCollections>
                     </items>
                 </ComboBox>

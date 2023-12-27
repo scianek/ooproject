@@ -25,10 +25,9 @@ public class Simulation {
             map.placeAnimal(animal);
         }
     }
-
-
+    
     private void addPlants(int numOfPlants) {
-        List<Vector2d> newPlantPositions = RandomGenerator.generatePlantPositions(map, numOfPlants, new CrawlingJungle());
+        List<Vector2d> newPlantPositions = RandomGenerator.generatePlantPositions(map, numOfPlants, config.plantGrowingVariant());
         newPlantPositions.forEach(position -> map.placePlant(new Plant(position)));
     }
 
@@ -44,9 +43,6 @@ public class Simulation {
             }
         }
         currDay++;
-
-        List<Vector2d> newPlantPositions = RandomGenerator.generatePlantPositions(map, 3, new CrawlingJungle());
-        newPlantPositions.forEach(position -> map.placePlant(new Plant(position)));
 
         addPlants(config.numOfPlantsGrowingPerDay());
     }

@@ -8,18 +8,21 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import ooproject.AppGUI;
-import ooproject.model.SimulationConfig;
+import ooproject.model.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class SimulationConfigPresenter {
     private AppGUI mainApp;
     @FXML
     private VBox mainBox;
     @FXML
-    private ComboBox<String> plantGrowingMethodComboBox;
+    private ComboBox<String> plantGrowingVariantComboBox;
+    @FXML
+    private ComboBox<String> geneMutationVariantComboBox;
 
     public void setMainApp(AppGUI mainApp) {
         this.mainApp = mainApp;
@@ -47,7 +50,9 @@ public class SimulationConfigPresenter {
                 Integer.parseInt(textFields.get(8).getText()),
                 Integer.parseInt(textFields.get(9).getText()),
                 Integer.parseInt(textFields.get(10).getText()),
-                Integer.parseInt(textFields.get(11).getText())
+                Integer.parseInt(textFields.get(11).getText()),
+                Objects.equals(plantGrowingVariantComboBox.getValue(), "Zalesione równiki") ? new ForestedEquator() : new CrawlingJungle(),
+                Objects.equals(geneMutationVariantComboBox.getValue(), "Pełna losowość") ? new FullRandomMutation() : new SwapMutation()
         );
         mainApp.showSimulation(config);
     }

@@ -6,7 +6,7 @@
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             xmlns="http://javafx.com/javafx"
             minHeight="550.0" minWidth="850.0"
-            fx:controller="ooproject.SimulationPresenter">
+            fx:controller="ooproject.presenter.SimulationPresenter">
     <center>
         <GridPane fx:id="mapGrid" gridLinesVisible="true"/>
     </center>

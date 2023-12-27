@@ -1,4 +1,4 @@
-package ooproject;
+package ooproject.model;
 
 import java.util.Objects;
 

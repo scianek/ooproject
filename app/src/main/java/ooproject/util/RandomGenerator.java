@@ -1,4 +1,9 @@
-package ooproject;
+package ooproject.util;
+
+import ooproject.model.Plant;
+import ooproject.model.PlantGrowingVariant;
+import ooproject.model.Vector2d;
+import ooproject.model.WorldMap;
 
 import java.util.*;
 import java.util.stream.Collectors;

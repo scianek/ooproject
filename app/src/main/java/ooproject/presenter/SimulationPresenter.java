@@ -1,4 +1,4 @@
-package ooproject;
+package ooproject.presenter;
 
 
 import javafx.fxml.FXML;
@@ -8,6 +8,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
+import ooproject.model.Boundary;
+import ooproject.model.Simulation;
+import ooproject.model.Vector2d;
+import ooproject.model.WorldElement;
 
 import java.util.List;
 import java.util.stream.Collectors;

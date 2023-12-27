@@ -5,6 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import ooproject.model.Simulation;
+import ooproject.model.SimulationConfig;
+import ooproject.presenter.SimulationConfigPresenter;
+import ooproject.presenter.SimulationPresenter;
 
 import java.io.IOException;
 

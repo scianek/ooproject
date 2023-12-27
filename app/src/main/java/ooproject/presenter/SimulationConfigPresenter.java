@@ -1,4 +1,4 @@
-package ooproject;
+package ooproject.presenter;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -7,6 +7,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import ooproject.AppGUI;
+import ooproject.model.SimulationConfig;
 
 import java.io.IOException;
 import java.util.ArrayList;

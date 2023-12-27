@@ -1,4 +1,4 @@
-package ooproject;
+package ooproject.model;
 
 public class Plant implements WorldElement {
     private Vector2d position;

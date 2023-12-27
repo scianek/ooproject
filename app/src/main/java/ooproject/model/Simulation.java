@@ -1,4 +1,6 @@
-package ooproject;
+package ooproject.model;
+
+import ooproject.util.RandomGenerator;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package ooproject;
+package ooproject.model;
 
 
 //public record SimulationConfig(int mapWidth, int mapHeight, int initialNumOfPlants, int energyFromPlant,

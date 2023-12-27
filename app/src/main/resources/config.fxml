@@ -7,7 +7,7 @@
 <?import java.lang.String?>
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             xmlns="http://javafx.com/javafx"
-            fx:controller="ooproject.SimulationConfigPresenter"
+            fx:controller="ooproject.presenter.SimulationConfigPresenter"
             minHeight="400.0" minWidth="600.0">
     <padding>
         <Insets top="24" right="24" bottom="24" left="24"/>

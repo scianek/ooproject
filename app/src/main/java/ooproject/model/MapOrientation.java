@@ -1,4 +1,4 @@
-package ooproject;
+package ooproject.model;
 
 public enum MapOrientation {
     N(new Vector2d(0, 1)),

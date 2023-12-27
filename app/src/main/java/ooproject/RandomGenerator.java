@@ -26,7 +26,7 @@ public class RandomGenerator {
                 .collect(Collectors.toList());
     }
 
-    public static List<Vector2d> generatePlantPositions(WorldMap map, int numOfPositions) {
+    public static List<Vector2d> generatePlantPositions(WorldMap map, int numOfPositions, PlantGrowingVariant plantGrowingMethod) {
         var bounds = map.getCurrentBounds();
         int width = bounds.topRight().getX();
         int height = bounds.topRight().getY();
@@ -39,10 +39,8 @@ public class RandomGenerator {
                 if (existingPlants.get(currPosition) != null) {
                     continue;
                 }
-                boolean hasAdjacentPlants = Arrays.stream(MapOrientation.values()).anyMatch((MapOrientation orientation) ->
-                        existingPlants.get(currPosition.add(orientation.getMove())) != null);
 
-                if (hasAdjacentPlants) {
+                if (plantGrowingMethod.isPreferredField(map, currPosition)) {
                     // if it's a preferred field, make it 4 times more likely to come up
                     positions.addAll(Collections.nCopies(4, currPosition));
                 } else {

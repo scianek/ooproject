@@ -5,8 +5,8 @@ import java.util.*;
 public class WorldMap {
     private final Map<Vector2d, List<Animal>> animals = new HashMap<>();
     private final Map<Vector2d, Plant> plants = new HashMap<>();
-    private Vector2d bottomLeft = new Vector2d(0, 0);
-    private Vector2d upperRight;
+    private final Vector2d bottomLeft = new Vector2d(0, 0);
+    private final Vector2d upperRight;
 
     public WorldMap(int width, int height) {
         upperRight = new Vector2d(width - 1, height - 1);
@@ -61,5 +61,9 @@ public class WorldMap {
 
     public Map<Vector2d, Plant> getPlants() {
         return Collections.unmodifiableMap(plants);
+    }
+
+    public void removePlant(Vector2d position) {
+        plants.remove(position);
     }
 }

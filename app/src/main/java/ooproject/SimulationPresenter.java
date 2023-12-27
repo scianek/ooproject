@@ -23,10 +23,6 @@ public class SimulationPresenter {
 
     private Simulation simulation;
 
-    public SimulationPresenter() {
-        simulation = new Simulation(new WorldMap(10, 10));
-    }
-
     public void setSimulation(Simulation simulation) {
         this.simulation = simulation;
     }
@@ -71,7 +67,7 @@ public class SimulationPresenter {
     }
 
     public void handleNext() {
-        simulation.makeNextStep();
+        simulation.runNextDay();
         this.drawMap();
     }
 }

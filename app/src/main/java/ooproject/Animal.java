@@ -36,4 +36,8 @@ public class Animal implements WorldElement {
     public void turnAround() {
         orientation.turn(4);
     }
+
+    public void addEnergy(int energy) {
+        this.energy += energy;
+    }
 }

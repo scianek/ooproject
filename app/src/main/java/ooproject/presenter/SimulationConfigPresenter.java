@@ -13,7 +13,6 @@ import ooproject.model.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class SimulationConfigPresenter {
     private AppGUI mainApp;
@@ -36,7 +35,6 @@ public class SimulationConfigPresenter {
             return;
         }
 
-
         // mfw no spread operator
         var config = new SimulationConfig(
                 Integer.parseInt(textFields.get(0).getText()),
@@ -51,8 +49,9 @@ public class SimulationConfigPresenter {
                 Integer.parseInt(textFields.get(9).getText()),
                 Integer.parseInt(textFields.get(10).getText()),
                 Integer.parseInt(textFields.get(11).getText()),
-                Objects.equals(plantGrowingVariantComboBox.getValue(), "Zalesione równiki") ? new ForestedEquator() : new CrawlingJungle(),
-                Objects.equals(geneMutationVariantComboBox.getValue(), "Pełna losowość") ? new FullRandomMutation() : new SwapMutation()
+                Integer.parseInt(textFields.get(12).getText()),
+                plantGrowingVariantComboBox.getValue().equals("Zalesione równiki") ? new ForestedEquator() : new CrawlingJungle(),
+                geneMutationVariantComboBox.getValue().equals("Pełna losowość") ? new FullRandomMutation() : new SwapMutation()
         );
         mainApp.showSimulation(config);
     }

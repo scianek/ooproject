@@ -66,4 +66,8 @@ public class WorldMap {
     public void removePlant(Vector2d position) {
         plants.remove(position);
     }
+
+    public void removeAnimal(Animal animal) {
+        animals.get(animal.getPosition()).remove(animal);
+    }
 }

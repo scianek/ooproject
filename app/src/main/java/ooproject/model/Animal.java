@@ -8,9 +8,12 @@ public class Animal implements WorldElement {
     private int energy;
     private int nextGeneIdx = 0;
     private Vector2d position;
+    private int ageInDays = 0;
+    private int numOfChildren = 0;
 
-    public Animal(List<Integer> genes) {
+    public Animal(List<Integer> genes, int initialEnergy) {
         this.genes = genes;
+        this.energy = initialEnergy;
     }
 
     public Vector2d getNextMove() {
@@ -29,8 +32,11 @@ public class Animal implements WorldElement {
     }
 
     @Override
+//    public String toString() {
+//        return Integer.toString(orientation.turn(genes.get(nextGeneIdx)).ordinal());
+//    }
     public String toString() {
-        return Integer.toString(orientation.turn(genes.get(nextGeneIdx)).ordinal());
+        return Integer.toString(energy);
     }
 
     public void turnAround() {
@@ -39,5 +45,21 @@ public class Animal implements WorldElement {
 
     public void addEnergy(int energy) {
         this.energy += energy;
+    }
+
+    public void subtractEnergy(int energy) {
+        this.energy -= energy;
+    }
+
+    public int getEnergy() {
+        return energy;
+    }
+
+    public int getAge() {
+        return ageInDays;
+    }
+
+    public int getNumOfChildren() {
+        return numOfChildren;
     }
 }

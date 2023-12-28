@@ -63,6 +63,10 @@
                 <TextField maxWidth="100.0"/>
             </VBox>
             <VBox>
+                <Label text="Daily energy loss"/>
+                <TextField maxWidth="100.0"/>
+            </VBox>
+            <VBox>
                 <Label text="Plant growing variant"/>
                 <ComboBox fx:id="plantGrowingVariantComboBox" promptText="Select an option" value="Zalesione równiki">
                     <items>

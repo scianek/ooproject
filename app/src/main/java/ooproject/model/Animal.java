@@ -3,7 +3,7 @@ package ooproject.model;
 import java.util.List;
 
 public class Animal implements WorldElement {
-    private final List<Integer> genes;
+    private final List<Integer> genome;
     private MapOrientation orientation = MapOrientation.N;
     private int energy;
     private int nextGeneIdx = 0;
@@ -11,15 +11,15 @@ public class Animal implements WorldElement {
     private int ageInDays = 0;
     private int numOfChildren = 0;
 
-    public Animal(List<Integer> genes, int initialEnergy) {
-        this.genes = genes;
+    public Animal(List<Integer> genome, int initialEnergy) {
+        this.genome = genome;
         this.energy = initialEnergy;
     }
 
     public Vector2d getNextMove() {
-        int nextGene = genes.get(nextGeneIdx);
+        int nextGene = genome.get(nextGeneIdx);
         orientation = orientation.turn(nextGene);
-        nextGeneIdx = (nextGeneIdx + 1) % genes.size();
+        nextGeneIdx = (nextGeneIdx + 1) % genome.size();
         return orientation.getMove();
     }
 
@@ -61,5 +61,9 @@ public class Animal implements WorldElement {
 
     public int getNumOfChildren() {
         return numOfChildren;
+    }
+
+    public List<Integer> getGenome() {
+        return genome;
     }
 }

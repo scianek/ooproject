@@ -1,9 +1,6 @@
 package ooproject.util;
 
-import ooproject.model.Plant;
-import ooproject.model.PlantGrowingVariant;
-import ooproject.model.Vector2d;
-import ooproject.model.WorldMap;
+import ooproject.model.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -55,5 +52,25 @@ public class RandomGenerator {
         }
         Collections.shuffle(positions);
         return positions.size() > numOfPositions ? positions.subList(0, numOfPositions) : positions;
+    }
+
+    public static List<Integer> generateGenome(Animal parent1, Animal parent2, GeneticMutationVariant geneticMutationVariant, int minNumOfMutations, int maxNumOfMutations) {
+        double totalEnergy = parent1.getEnergy() + parent2.getEnergy();
+        double parent1Contribution = parent1.getEnergy() / totalEnergy;
+        double parent2Contribution = parent2.getEnergy() / totalEnergy;
+        int genomeSize = parent1.getGenome().size();
+
+        List<Integer> childGenome = new ArrayList<>();
+
+        if (new Random().nextBoolean()) {
+            int splitIndex = (int) Math.floor(genomeSize * parent1Contribution);
+            childGenome.addAll(parent1.getGenome().subList(0, splitIndex));
+            childGenome.addAll(parent2.getGenome().subList(splitIndex, genomeSize));
+        } else {
+            int splitIndex = (int) Math.floor(genomeSize * parent2Contribution);
+            childGenome.addAll(parent1.getGenome().subList(0, splitIndex));
+            childGenome.addAll(parent2.getGenome().subList(splitIndex, genomeSize));
+        }
+        return geneticMutationVariant.mutateGenome(childGenome, minNumOfMutations, maxNumOfMutations);
     }
 }

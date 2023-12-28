@@ -70,4 +70,8 @@ public class WorldMap {
     public void removeAnimal(Animal animal) {
         animals.get(animal.getPosition()).remove(animal);
     }
+
+    public Map<Vector2d, List<Animal>> getAnimals() {
+        return animals;
+    }
 }

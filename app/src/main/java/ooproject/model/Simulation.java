@@ -53,6 +53,29 @@ public class Simulation {
         positionsToRemove.forEach(map::removePlant);
     }
 
+    private void breedAnimals() {
+        Map<Vector2d, List<Animal>> mapAnimals = map.getAnimals();
+        for (Vector2d position : mapAnimals.keySet()) {
+            List<Animal> localAnimals = mapAnimals.get(position);
+            if (localAnimals.size() < 2) {
+                continue;
+            }
+            localAnimals.sort(new AnimalComparator());
+            var parent1 = localAnimals.get(0);
+            var parent2 = localAnimals.get(1);
+            if (parent1.getEnergy() < config.optimalEnergyLevel() || parent2.getEnergy() < config.optimalEnergyLevel()) {
+                continue;
+            }
+            parent1.subtractEnergy(config.energyLossOnBreeding());
+            parent2.subtractEnergy(config.energyLossOnBreeding());
+            List<Integer> newBornGenome = RandomGenerator.generateGenome(parent1, parent2, config.geneticMutationVariant(), config.minNumOfMutations(), config.maxNumOfMutations());
+            var newbornAnimal = new Animal(newBornGenome, config.energyLossOnBreeding() * 2);
+            newbornAnimal.setPosition(position);
+            animals.add(newbornAnimal);
+            map.placeAnimal(newbornAnimal);
+        }
+    }
+
     public void runNextDay() {
         currDay++;
         for (Animal animal : animals) {
@@ -61,6 +84,7 @@ public class Simulation {
             map.moveAnimal(animal, nextMove);
         }
         consumePlants();
+        breedAnimals();
         addPlants(config.numOfPlantsGrowingPerDay());
     }
 

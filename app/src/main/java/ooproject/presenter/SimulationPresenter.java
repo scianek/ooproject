@@ -4,14 +4,11 @@ package ooproject.presenter;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
-import ooproject.model.Boundary;
-import ooproject.model.Simulation;
-import ooproject.model.Vector2d;
-import ooproject.model.WorldElement;
+import javafx.scene.text.Text;
+import ooproject.model.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,9 +20,10 @@ public class SimulationPresenter {
     private GridPane mapGrid;
 
     @FXML
-    private TextField movesTextField;
+    private Text statsDisplay;
 
     private Simulation simulation;
+
 
     public void setSimulation(Simulation simulation) {
         this.simulation = simulation;
@@ -72,6 +70,8 @@ public class SimulationPresenter {
 
     public void handleNext() {
         simulation.runNextDay();
-        this.drawMap();
+        SimulationStats stats = simulation.getStats();
+        statsDisplay.setText(stats.toString());
+        drawMap();
     }
 }

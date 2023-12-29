@@ -3,15 +3,15 @@ package ooproject.model;
 import ooproject.util.AnimalComparator;
 import ooproject.util.RandomGenerator;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Simulation {
     private final WorldMap map;
     private final List<Animal> animals = new ArrayList<>();
     private final SimulationConfig config;
     private int currDay = 0;
+    private int averageLifespan = 0;
+    private int numOfDeadAnimals = 0;
 
 
     public Simulation(SimulationConfig config) {
@@ -70,6 +70,8 @@ public class Simulation {
             parent2.subtractEnergy(config.energyLossOnBreeding());
             List<Integer> newBornGenome = RandomGenerator.generateGenome(parent1, parent2, config.geneticMutationVariant(), config.minNumOfMutations(), config.maxNumOfMutations());
             var newbornAnimal = new Animal(newBornGenome, config.energyLossOnBreeding() * 2);
+            parent1.addChild(newbornAnimal);
+            parent2.addChild(newbornAnimal);
             newbornAnimal.setPosition(position);
             animals.add(newbornAnimal);
             map.placeAnimal(newbornAnimal);
@@ -78,10 +80,21 @@ public class Simulation {
 
     public void runNextDay() {
         currDay++;
+        List<Animal> deadAnimals = new ArrayList<>();
         for (Animal animal : animals) {
+            if (animal.getEnergy() <= 0) {
+                deadAnimals.add(animal);
+                continue;
+            }
             Vector2d nextMove = animal.getNextMove();
             animal.subtractEnergy(config.dailyEnergyLoss());
             map.moveAnimal(animal, nextMove);
+        }
+        for (var animal : deadAnimals) {
+            numOfDeadAnimals++;
+            averageLifespan = (averageLifespan + animal.getAge()) / numOfDeadAnimals;
+            animals.remove(animal);
+            map.removeAnimal(animal);
         }
         consumePlants();
         breedAnimals();
@@ -90,5 +103,31 @@ public class Simulation {
 
     public WorldMap getMap() {
         return map;
+    }
+
+    public SimulationStats getStats() {
+        int numOfEmptyFields = 0;
+        for (int i = 0; i < config.mapWidth(); i++) {
+            for (int j = 0; j < config.mapHeight(); j++) {
+                if (map.objectsAt(new Vector2d(i, j)).isEmpty()) {
+                    numOfEmptyFields++;
+                }
+            }
+        }
+        List<List<Integer>> genomes = new ArrayList<>(animals.stream().map(Animal::getGenome).toList());
+        Map<List<Integer>, Integer> frequencyMap = new HashMap<>();
+        for (List<Integer> genome : genomes) {
+            frequencyMap.put(genome, frequencyMap.getOrDefault(genome, 0) + 1);
+        }
+        genomes.sort(Comparator.comparingInt(frequencyMap::get));
+        return new SimulationStats(
+                animals.size(),
+                map.getPlants().size(),
+                numOfEmptyFields,
+                genomes,
+                animals.stream().map(Animal::getEnergy).reduce(0, Integer::sum) / animals.size(),
+                averageLifespan,
+                animals.stream().map(Animal::getNumOfChildren).reduce(0, Integer::sum) / animals.size()
+        );
     }
 }

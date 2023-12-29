@@ -1,5 +1,6 @@
 package ooproject.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Animal implements WorldElement {
@@ -8,8 +9,8 @@ public class Animal implements WorldElement {
     private int energy;
     private int nextGeneIdx = 0;
     private Vector2d position;
-    private int ageInDays = 0;
-    private int numOfChildren = 0;
+    private int age = 0;
+    private List<Animal> children = new ArrayList<>();
 
     public Animal(List<Integer> genome, int initialEnergy) {
         this.genome = genome;
@@ -20,6 +21,7 @@ public class Animal implements WorldElement {
         int nextGene = genome.get(nextGeneIdx);
         orientation = orientation.turn(nextGene);
         nextGeneIdx = (nextGeneIdx + 1) % genome.size();
+        age++;
         return orientation.getMove();
     }
 
@@ -56,14 +58,22 @@ public class Animal implements WorldElement {
     }
 
     public int getAge() {
-        return ageInDays;
+        return age;
     }
 
     public int getNumOfChildren() {
-        return numOfChildren;
+        return children.size();
+    }
+
+    public int getNumOfDescendants() {
+        return children.size() + children.stream().map(Animal::getNumOfDescendants).reduce(0, Integer::sum);
     }
 
     public List<Integer> getGenome() {
         return genome;
+    }
+
+    public void addChild(Animal child) {
+        children.add(child);
     }
 }

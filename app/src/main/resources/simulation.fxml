@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 <BorderPane xmlns:fx="http://javafx.com/fxml"
@@ -12,7 +13,10 @@
     <center>
         <VBox>
             <GridPane fx:id="mapGrid" gridLinesVisible="true"/>
-            <Text fx:id="statsDisplay"/>
+            <HBox spacing="16">
+                <Text fx:id="statsDisplay"/>
+                <Text fx:id="trackedAnimalDisplay" text="Click on an animal to start tracking it"/>
+            </HBox>
         </VBox>
 
     </center>

@@ -9,12 +9,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Text;
 import ooproject.model.*;
+import ooproject.util.StringFormatter;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class SimulationPresenter {
-    private final static int CELL_SIZE = 30;
+    private final static int CELL_SIZE = 50;
 
     @FXML
     private GridPane mapGrid;
@@ -22,7 +23,12 @@ public class SimulationPresenter {
     @FXML
     private Text statsDisplay;
 
+    @FXML
+    private Text trackedAnimalDisplay;
+
     private Simulation simulation;
+
+    private Animal trackedAnimal;
 
 
     public void setSimulation(Simulation simulation) {
@@ -57,7 +63,15 @@ public class SimulationPresenter {
     }
 
     private void addCell(String text, int x, int y) {
+        Boundary bounds = simulation.getMap().getCurrentBounds();
         var label = new Label(text);
+        label.setOnMouseClicked(event -> {
+            List<Animal> animals = simulation.getMap().getAnimals().get(new Vector2d(bounds.bottomLeft().getX() + x - 1, bounds.topRight().getY() - y + 1));
+            if (animals != null && !animals.isEmpty()) {
+                trackedAnimal = animals.get(0);
+            }
+            printTrackedAnimalInfo();
+        });
         GridPane.setHalignment(label, HPos.CENTER);
         mapGrid.add(label, x, y);
     }
@@ -68,10 +82,26 @@ public class SimulationPresenter {
         mapGrid.getRowConstraints().clear();
     }
 
+    private void printTrackedAnimalInfo() {
+        if (trackedAnimal == null) {
+            return;
+        }
+        String[] data = {
+                "Genome:  " + StringFormatter.listToStringWithParentheses(trackedAnimal.getGenome(), trackedAnimal.getNextGene()),
+                "Energy: " + trackedAnimal.getEnergy(),
+                "Plants eaten: " + trackedAnimal.getNumOfPlantsEaten(),
+                "Number of children: " + trackedAnimal.getNumOfChildren(),
+                "Number of descendants: " + trackedAnimal.getNumOfDescendants(),
+                "How long alive: " + trackedAnimal.getAge() + " days",
+        };
+        trackedAnimalDisplay.setText(String.join("\n", data));
+    }
+
     public void handleNext() {
         simulation.runNextDay();
         SimulationStats stats = simulation.getStats();
         statsDisplay.setText(stats.toString());
+        printTrackedAnimalInfo();
         drawMap();
     }
 }

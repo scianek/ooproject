@@ -5,12 +5,13 @@ import java.util.List;
 
 public class Animal implements WorldElement {
     private final List<Integer> genome;
+    private final List<Animal> children = new ArrayList<>();
     private MapOrientation orientation = MapOrientation.N;
     private int energy;
     private int nextGeneIdx = 0;
     private Vector2d position;
     private int age = 0;
-    private List<Animal> children = new ArrayList<>();
+    private int numOfPlantsEaten = 0;
 
     public Animal(List<Integer> genome, int initialEnergy) {
         this.genome = genome;
@@ -46,6 +47,7 @@ public class Animal implements WorldElement {
     }
 
     public void addEnergy(int energy) {
+        numOfPlantsEaten++;
         this.energy += energy;
     }
 
@@ -75,5 +77,13 @@ public class Animal implements WorldElement {
 
     public void addChild(Animal child) {
         children.add(child);
+    }
+
+    public int getNumOfPlantsEaten() {
+        return numOfPlantsEaten;
+    }
+
+    public int getNextGene() {
+        return nextGeneIdx;
     }
 }

@@ -125,9 +125,9 @@ public class Simulation {
                 map.getPlants().size(),
                 numOfEmptyFields,
                 genomes,
-                animals.stream().map(Animal::getEnergy).reduce(0, Integer::sum) / animals.size(),
+                !animals.isEmpty() ? animals.stream().map(Animal::getEnergy).reduce(0, Integer::sum) / animals.size() : 0,
                 averageLifespan,
-                animals.stream().map(Animal::getNumOfChildren).reduce(0, Integer::sum) / animals.size()
+                !animals.isEmpty() ? animals.stream().map(Animal::getNumOfChildren).reduce(0, Integer::sum) / animals.size() : 0
         );
     }
 }

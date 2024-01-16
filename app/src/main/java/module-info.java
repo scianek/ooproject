@@ -2,6 +2,7 @@ module ooproject {
     requires javafx.controls;
     requires com.google.common;
     requires javafx.fxml;
+    requires com.fasterxml.jackson.databind;
 
 
     opens ooproject to javafx.fxml, com.google.common;

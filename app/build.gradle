@@ -29,6 +29,12 @@ dependencies {
 
     // This dependency is used by the application.
     implementation libs.guava
+
+    // Jackson Core
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.15.2' // Use the latest version
+
+    // Jackson Core
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.15.2' // Use the latest version
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

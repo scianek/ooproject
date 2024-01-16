@@ -13,84 +13,98 @@
         <Insets top="24" right="24" bottom="24" left="24"/>
     </padding>
     <center>
-        <VBox spacing="16" fx:id="mainBox">
-            <VBox>
-                <Label text="Map width"/>
-                <TextField maxWidth="100.0"/>
-            </VBox>
-            <VBox>
-                <Label text="Map height"/>
-                <TextField maxWidth="100.0"/>
-            </VBox>
-            <VBox>
-                <Label text="Initial number of plants"/>
-                <TextField maxWidth="100.0"/>
-            </VBox>
-            <VBox>
-                <Label text="Energy increase from a plant"/>
-                <TextField maxWidth="100.0"/>
-            </VBox>
-            <VBox>
-                <Label text="Number of plants growing per day"/>
-                <TextField maxWidth="100.0"/>
-            </VBox>
-            <VBox>
-                <Label text="Initial number of animals"/>
-                <TextField maxWidth="100.0"/>
-            </VBox>
-            <VBox>
-                <Label text="Initial energy per animal"/>
-                <TextField maxWidth="100.0"/>
-            </VBox>
-            <VBox>
-                <Label text="Optimal energy level (for breeding)"/>
-                <TextField maxWidth="100.0"/>
-            </VBox>
-            <VBox>
-                <Label text="Energy loss on breeding"/>
-                <TextField maxWidth="100.0"/>
-            </VBox>
-            <VBox>
-                <Label text="Minimal number of mutations"/>
-                <TextField maxWidth="100.0"/>
-            </VBox>
-            <VBox>
-                <Label text="Maximal number of mutations"/>
-                <TextField maxWidth="100.0"/>
-            </VBox>
-            <VBox>
-                <Label text="Genome length"/>
-                <TextField maxWidth="100.0"/>
-            </VBox>
-            <VBox>
-                <Label text="Daily energy loss"/>
-                <TextField maxWidth="100.0"/>
-            </VBox>
-            <VBox>
-                <Label text="Plant growing variant"/>
-                <ComboBox fx:id="plantGrowingVariantComboBox" promptText="Select an option" value="Zalesione równiki">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Zalesione równiki"/>
-                            <String fx:value="Pełzająca dżungla"/>
-                        </FXCollections>
-                    </items>
-                </ComboBox>
-            </VBox>
-            <VBox>
-                <Label text="Gene mutation variant"/>
-                <ComboBox fx:id="geneMutationVariantComboBox" promptText="Select an option" value="Pełna losowość">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Pełna losowość"/>
-                            <String fx:value="Podmianka"/>
-                        </FXCollections>
-                    </items>
-                </ComboBox>
-            </VBox>
+        <HBox spacing="128">
+            <VBox spacing="16" fx:id="mainBox">
+                <VBox>
+                    <Label text="Map width"/>
+                    <TextField maxWidth="100.0"/>
+                </VBox>
+                <VBox>
+                    <Label text="Map height"/>
+                    <TextField maxWidth="100.0"/>
+                </VBox>
+                <VBox>
+                    <Label text="Initial number of plants"/>
+                    <TextField maxWidth="100.0"/>
+                </VBox>
+                <VBox>
+                    <Label text="Energy increase from a plant"/>
+                    <TextField maxWidth="100.0"/>
+                </VBox>
+                <VBox>
+                    <Label text="Number of plants growing per day"/>
+                    <TextField maxWidth="100.0"/>
+                </VBox>
+                <VBox>
+                    <Label text="Initial number of animals"/>
+                    <TextField maxWidth="100.0"/>
+                </VBox>
+                <VBox>
+                    <Label text="Initial energy per animal"/>
+                    <TextField maxWidth="100.0"/>
+                </VBox>
+                <VBox>
+                    <Label text="Optimal energy level (for breeding)"/>
+                    <TextField maxWidth="100.0"/>
+                </VBox>
+                <VBox>
+                    <Label text="Energy loss on breeding"/>
+                    <TextField maxWidth="100.0"/>
+                </VBox>
+                <VBox>
+                    <Label text="Minimal number of mutations"/>
+                    <TextField maxWidth="100.0"/>
+                </VBox>
+                <VBox>
+                    <Label text="Maximal number of mutations"/>
+                    <TextField maxWidth="100.0"/>
+                </VBox>
+                <VBox>
+                    <Label text="Genome length"/>
+                    <TextField maxWidth="100.0"/>
+                </VBox>
+                <VBox>
+                    <Label text="Daily energy loss"/>
+                    <TextField maxWidth="100.0"/>
+                </VBox>
+                <VBox>
+                    <Label text="Plant growing variant"/>
+                    <ComboBox fx:id="plantGrowingVariantComboBox" promptText="Select an option"
+                              value="Zalesione równiki">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Zalesione równiki"/>
+                                <String fx:value="Pełzająca dżungla"/>
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                </VBox>
+                <VBox>
+                    <Label text="Gene mutation variant"/>
+                    <ComboBox fx:id="geneMutationVariantComboBox" promptText="Select an option" value="Pełna losowość">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Pełna losowość"/>
+                                <String fx:value="Podmianka"/>
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                </VBox>
 
-        </VBox>
-
+            </VBox>
+            <VBox spacing="32">
+                <VBox spacing="16">
+                    <VBox>
+                        <Label text="Config name"/>
+                        <TextField fx:id="saveConfigName" maxWidth="200.0"/>
+                    </VBox>
+                    <Button text="Save config" onAction="#handleSave"/>
+                </VBox>
+                <VBox fx:id="savedConfigsBox" spacing="16">
+                    <Label text="Saved configs:"/>
+                </VBox>
+            </VBox>
+        </HBox>
     </center>
     <bottom>
         <Button text="Start" onAction="#handleStart"/>

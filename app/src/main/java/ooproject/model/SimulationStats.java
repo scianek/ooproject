@@ -11,7 +11,7 @@ public record SimulationStats(int numOfAnimals, int numOfPlants, int numOfEmptyF
                 "Current number of animals: " + numOfAnimals,
                 "Current number of plants: " + numOfPlants,
                 "Current number of empty fields: " + numOfEmptyFields,
-                "Most common genome: " + mostCommonGenomes.get(0).toString(),
+                "Most common genome: " + (mostCommonGenomes.isEmpty() ? "-" : mostCommonGenomes.get(0).toString()),
                 "Average energy level: " + averageEnergyLevel,
                 "Average lifespan: " + averageLifespan,
                 "Average number of children: " + averageNumOfChildren

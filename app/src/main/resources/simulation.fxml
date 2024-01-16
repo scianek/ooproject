@@ -21,6 +21,6 @@
 
     </center>
     <bottom>
-        <Button text="Next" onAction="#handleNext"/>
+        <Button fx:id="toggleButton" text="Pause" onAction="#toggleSimulation"/>
     </bottom>
 </BorderPane>

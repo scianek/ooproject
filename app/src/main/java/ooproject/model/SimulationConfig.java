@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.NamedType;
 import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
+import ooproject.interfaces.GeneticMutationVariant;
+import ooproject.interfaces.PlantGrowingVariant;
 
 public record SimulationConfig(int mapWidth, int mapHeight, int initialNumOfPlants, int energyFromPlant,
                                int numOfPlantsGrowingPerDay, int initialNumOfAnimals, int initialEnergy,
@@ -22,7 +24,7 @@ public record SimulationConfig(int mapWidth, int mapHeight, int initialNumOfPlan
                 new NamedType(FullRandomMutation.class, "fullRandomMutation"),
                 new NamedType(SwapMutation.class, "swapMutation")
         );
-        
+
         objectMapper.activateDefaultTyping(LaissezFaireSubTypeValidator.instance, ObjectMapper.DefaultTyping.NON_FINAL);
 
         return objectMapper.readValue(jsonString, SimulationConfig.class);

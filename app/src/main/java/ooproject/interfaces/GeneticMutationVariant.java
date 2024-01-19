@@ -1,7 +1,9 @@
-package ooproject.model;
+package ooproject.interfaces;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import ooproject.model.FullRandomMutation;
+import ooproject.model.SwapMutation;
 
 import java.util.List;
 

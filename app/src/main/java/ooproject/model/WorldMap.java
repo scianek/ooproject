@@ -1,5 +1,7 @@
 package ooproject.model;
 
+import ooproject.interfaces.WorldElement;
+
 import java.util.*;
 
 public class WorldMap {

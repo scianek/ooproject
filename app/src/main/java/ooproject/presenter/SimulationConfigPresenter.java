@@ -122,10 +122,6 @@ public class SimulationConfigPresenter implements Initializable {
             var file = new File(configName + ".json");
             var writer = new FileWriter(configName + ".json");
             boolean result = file.createNewFile();
-            if (!result) {
-                showAlert("Config with that name already exists");
-                return;
-            }
             writer.write(config.serialize());
             writer.close();
         }

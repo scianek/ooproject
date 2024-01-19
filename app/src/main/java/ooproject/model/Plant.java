@@ -1,5 +1,7 @@
 package ooproject.model;
 
+import ooproject.interfaces.WorldElement;
+
 public class Plant implements WorldElement {
     private Vector2d position;
 

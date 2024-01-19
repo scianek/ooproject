@@ -1,5 +1,7 @@
 package ooproject.model;
 
+import ooproject.interfaces.GeneticMutationVariant;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

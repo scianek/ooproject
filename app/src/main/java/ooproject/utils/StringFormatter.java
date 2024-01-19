@@ -1,4 +1,4 @@
-package ooproject.util;
+package ooproject.utils;
 
 import java.util.List;
 

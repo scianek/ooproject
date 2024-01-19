@@ -1,6 +1,8 @@
 package ooproject.model;
 
 
+import ooproject.interfaces.PlantGrowingVariant;
+
 import java.util.Arrays;
 
 public class CrawlingJungle implements PlantGrowingVariant {

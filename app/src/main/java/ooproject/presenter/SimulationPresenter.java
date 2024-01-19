@@ -16,8 +16,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import ooproject.interfaces.WorldElement;
 import ooproject.model.*;
-import ooproject.util.StringFormatter;
+import ooproject.utils.StringFormatter;
 
 import java.net.URL;
 import java.util.List;

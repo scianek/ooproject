@@ -1,7 +1,8 @@
 package ooproject.model;
 
-import ooproject.util.AnimalComparator;
-import ooproject.util.RandomGenerator;
+import ooproject.interfaces.WorldElement;
+import ooproject.utils.AnimalComparator;
+import ooproject.utils.RandomGenerator;
 
 import java.util.*;
 
@@ -10,7 +11,7 @@ public class Simulation {
     private final List<Animal> animals = new ArrayList<>();
     private final SimulationConfig config;
     private int currDay = 0;
-    private int averageLifespan = 0;
+    private double averageLifespan = 0;
     private int numOfDeadAnimals = 0;
 
 

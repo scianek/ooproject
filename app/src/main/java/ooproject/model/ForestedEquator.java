@@ -1,5 +1,7 @@
 package ooproject.model;
 
+import ooproject.interfaces.PlantGrowingVariant;
+
 public class ForestedEquator implements PlantGrowingVariant {
     @Override
     public boolean isPreferredField(WorldMap map, Vector2d field) {

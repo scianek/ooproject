@@ -11,6 +11,8 @@ module ooproject {
     opens ooproject.model to com.google.common, javafx.fxml;
     exports ooproject.presenter;
     opens ooproject.presenter to com.google.common, javafx.fxml;
-    exports ooproject.util;
-    opens ooproject.util to com.google.common, javafx.fxml;
+    exports ooproject.utils;
+    opens ooproject.utils to com.google.common, javafx.fxml;
+    exports ooproject.interfaces;
+    opens ooproject.interfaces to com.google.common, javafx.fxml;
 }

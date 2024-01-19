@@ -1,5 +1,7 @@
 package ooproject.model;
 
+import ooproject.interfaces.GeneticMutationVariant;
+
 import java.util.List;
 import java.util.Random;
 

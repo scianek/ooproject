@@ -1,6 +1,11 @@
-package ooproject.util;
+package ooproject.utils;
 
-import ooproject.model.*;
+import ooproject.interfaces.GeneticMutationVariant;
+import ooproject.interfaces.PlantGrowingVariant;
+import ooproject.model.Animal;
+import ooproject.model.Plant;
+import ooproject.model.Vector2d;
+import ooproject.model.WorldMap;
 
 import java.util.*;
 import java.util.stream.Collectors;

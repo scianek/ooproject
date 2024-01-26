@@ -10,7 +10,7 @@ public class Simulation {
     private final WorldMap map;
     private final List<Animal> animals = new ArrayList<>();
     private final SimulationConfig config;
-    private int currDay = 0;
+    private int currDay = 0; // nieużywane pole
     private double averageLifespan = 0;
     private int numOfDeadAnimals = 0;
 
@@ -97,7 +97,7 @@ public class Simulation {
             animals.remove(animal);
             map.removeAnimal(animal);
         }
-        consumePlants();
+        consumePlants(); // pomieszanie poziomów abstrakcji
         breedAnimals();
         addPlants(config.numOfPlantsGrowingPerDay());
     }

@@ -89,7 +89,7 @@ public class SimulationConfigPresenter implements Initializable {
 
     private void loadConfig(SimulationConfig config) {
         List<TextField> textFields = findAllTextFields(mainBox);
-        textFields.get(0).setText(Integer.toString(config.mapWidth()));
+        textFields.get(0).setText(Integer.toString(config.mapWidth()));  // czy mamy pewność, że kolejność w textFields jest odpowiednia?
         textFields.get(1).setText(Integer.toString(config.mapWidth()));
         textFields.get(2).setText(Integer.toString(config.initialNumOfPlants()));
         textFields.get(3).setText(Integer.toString(config.energyFromPlant()));

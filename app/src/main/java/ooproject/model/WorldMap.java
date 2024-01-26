@@ -74,6 +74,6 @@ public class WorldMap {
     }
 
     public Map<Vector2d, List<Animal>> getAnimals() {
-        return animals;
+        return animals;  // dehermetyzacja
     }
 }

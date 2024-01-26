@@ -12,7 +12,7 @@ import ooproject.presenter.SimulationPresenter;
 
 import java.io.IOException;
 
-public class AppGUI extends Application {
+public class AppGUI extends Application { // mylące nazwy App i AppGUI
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader();

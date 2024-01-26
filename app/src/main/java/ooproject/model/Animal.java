@@ -74,7 +74,7 @@ public class Animal implements WorldElement {
     }
 
     public List<Integer> getGenome() {
-        return genome;
+        return genome;  // dehermetyzacja
     }
 
     public void addChild(Animal child) {

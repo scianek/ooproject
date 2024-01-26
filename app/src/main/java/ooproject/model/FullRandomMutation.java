@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 public class FullRandomMutation implements GeneticMutationVariant {
     @Override
     public List<Integer> mutateGenome(List<Integer> genome, int minNumOfMutations, int maxNumOfMutations) {
-        var random = new Random();
+        var random = new Random(); // co wywołanie?
         int numOfMutations = random.nextInt(maxNumOfMutations - minNumOfMutations + 1) + minNumOfMutations;
 
         List<Integer> indices = new ArrayList<>(IntStream.range(0, genome.size()).boxed().toList());

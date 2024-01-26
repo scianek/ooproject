@@ -9,7 +9,7 @@ public class SwapMutation implements GeneticMutationVariant {
     @Override
     public List<Integer> mutateGenome(List<Integer> genome, int minNumOfMutations, int maxNumOfMutations) {
         List<Integer> mutatedGenome = new FullRandomMutation().mutateGenome(genome, minNumOfMutations, maxNumOfMutations);
-        var random = new Random();
+        var random = new Random(); // co wywołanie?
         for (int i = 0; i < mutatedGenome.size() - 1; i++) {
             if (random.nextDouble() < 0.1) {
                 int temp = mutatedGenome.get(i);

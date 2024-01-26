@@ -1,4 +1,4 @@
-package ooproject.interfaces;
+package ooproject.interfaces;  // czy to nie jest część modelu?
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
